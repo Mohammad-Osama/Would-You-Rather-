@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { handleInitialData } from "../actions/shared"
 import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
+import Login from './Login'
+import Home from './Home'
 
 class App extends Component {
 
@@ -11,9 +14,9 @@ class App extends Component {
   
   render() {
     return (
-      <div>
-        Starter Code
-      </div>
+          this.props.authedUser
+          ? <Route exact path='/' component={Home} />            
+          : <Login />
     )
   }
 }
