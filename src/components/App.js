@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   
-  render() {
+  render() { // login redeners incase no authed user 
     return (
           this.props.authedUser
           ? <Route exact path='/' component={Home} />            
