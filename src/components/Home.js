@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Tabs , Tab } from 'react-bootstrap'
+import Question from './Question'
 
 class Home extends Component {
     render() {
@@ -15,13 +17,13 @@ class Home extends Component {
                         className="mb-3"
                         >
                         <Tab eventKey="home" title="Home">
-                            <Sonnet />
+                            <Question />
                         </Tab>
                         <Tab eventKey="profile" title="Profile">
-                            <Sonnet />
+                            <Question />
                         </Tab>
                         <Tab eventKey="contact" title="Contact" disabled>
-                            <Sonnet />
+                            <Question />
                         </Tab>
                     </Tabs>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { handleInitialData } from "../actions/shared"
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route , Routes } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
 
@@ -15,10 +15,18 @@ class App extends Component {
   render() { // login redeners incase no authed user 
     return (
           this.props.authedUser
-          ? <Route exact path='/' component={Home} />            
+          ? <Routes> 
+                  <Route exact path='/' element={<Home/>} />
+            </Routes>           
           : <Login />
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+        }
+      } 
+
+export default connect(mapStateToProps)(App)
