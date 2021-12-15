@@ -4,14 +4,17 @@ import { Card , Button  } from 'react-bootstrap'
 
 
 
- class Question extends Component {
+ class UserInfo extends Component {
+     
     render() {
+        console.log( "UserInfo props " + this.props) 
+        const authedUser = this.props.authedUser 
         return (
             <div>
                 <Card >
-                    <Card.Img style={{ height: 160, width: 240 }} variant="left" src={this.props.users.avatarURL} />
+                    <Card.Img style={{ height: 100, width: 100 }} variant="right" src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
                     <Card.Body>
-                        <Card.Title>'this.props.title'</Card.Title>
+                        <Card.Title>{this.props.users.name +' asks'}</Card.Title>
                         <Card.Text>
                             this.props.body
                         </Card.Text>
@@ -27,9 +30,10 @@ import { Card , Button  } from 'react-bootstrap'
     }
 }
 
-function mapStateToProps ({users}) {  
-    return {
-      users,
-        }   
+function mapStateToProps({ users , authedUser  }) {
+      return {
+      users : users[authedUser]
+    }
   }
-export default connect(mapStateToProps) (Question)
+
+export default connect(mapStateToProps)(UserInfo)

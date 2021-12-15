@@ -18,8 +18,9 @@ class Login extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
+         // const { dispatch } = this.props
         if (this.state.user) {
-            this.props.setAuthedUser(this.state)
+            this.props.dispatch(setAuthedUser(this.state.user))
         }  
     }   
     
@@ -36,7 +37,7 @@ class Login extends Component {
                         <h4>Please Sign In To Continue</h4>
                         </Col>
                     </Row>
-                    <Form className="text-center" onSubmit={this.onSubmit}>
+                    <Form  onSubmit={this.onSubmit}>
                         <Form.Group>
                             <Form.Control as="select" size="lg" name="user" onChange={this.onChange} >
                                 {Object.values(this.props.users).map(user =>
@@ -58,7 +59,7 @@ class Login extends Component {
 function mapStateToProps ({users}) {  
     return {
       users,
-        }   
+         }   
   }
 
-export default connect(mapStateToProps , { setAuthedUser })(Login)
+export default connect(mapStateToProps)(Login)

@@ -1,38 +1,53 @@
 import React, { Component } from 'react'
 import { Tabs , Tab } from 'react-bootstrap'
-import Question from './Question'
+import UserInfo from './UserInfo'
 
 class Home extends Component {
+     /*render nav bar   */
+    /*render home view - tab with answered + unanswered
+                props for each tab 
+                 all in grid ? */
     render() {
         return (
-            <div>
-                home {/*render nav bar  */}
-                    {/*render home view - tab with answered + unanswered
-                                props for each tab 
-                                 all in grid ? */}
+           
+                
                 <Tabs
                         defaultActiveKey="home"
                         transition={false}
                         id="noanim-tab-example"
                         className="mb-3"
+                        fill
+                         
                         >
-                        <Tab eventKey="home" title="Home">
-                            <Question />
+                        <Tab eventKey="home" title="Answered">
+                            
+
+                            <UserInfo />
                         </Tab>
-                        <Tab eventKey="profile" title="Profile">
-                            <Question />
+                        <Tab eventKey="profile" title="UnAnswered">
+                            
                         </Tab>
-                        <Tab eventKey="contact" title="Contact" disabled>
-                            <Question />
-                        </Tab>
+                        
                     </Tabs>
 
 
 
-            </div>
+          
         )
     }
 }
 
+function mapStateToProps ({users , authedUser , questions }) { 
+    
+    const answeredId = Object.keys(users[authedUser].answers) 
+    const answeredQuestions = Object.values(questions).filter(
+                                    (question) => !answeredId.includes(question.id))
+                                    .sort((a, b) => b.timestamp - a.timestamp)
+    return {
+        answeredQuestions : answeredQuestions,
+        users ,
+        authedUser
+  }
+}
 
 export default Home
