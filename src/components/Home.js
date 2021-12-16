@@ -1,28 +1,32 @@
 import React, { Component } from 'react'
 import { Tab } from 'semantic-ui-react'
 import UserInfo from './UserInfo'
-const panes = [
-    { menuItem: 'Tab 1', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
-    { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+import { connect } from 'react-redux'
+
+
+
+const panes = ()=> { [
+    { menuItem: 'Answered Questions', render: () => 
+            <Tab.Pane>
+                {answeredQuestions.map((x)=>
+                  (  <UserInfo/>   )       )  }    //  
+            </Tab.Pane> },
+
+
+    { menuItem: 'Un Answered Questions', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
     
-  ]
+  ] }
 class Home extends Component {
      /*render nav bar   */
     /*render home view - tab with answered + unanswered
                 props for each tab 
                  all in grid ? */
                      
-    render() {
-
-        
-        return (
-                
-            <Tab menu={{ secondary: true, pointing: true }} panes={panes} />  
-              
-
-
-
-          
+    render() { 
+        const {answeredQuestions}= this.props.answeredQuestions       
+        return (    
+                        
+            <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions)} />    
         )
     }
 }
@@ -42,4 +46,4 @@ function mapStateToProps ({users , authedUser , questions }) {
 
 
 
-export default Home
+export default connect(mapStateToProps)(Home)
