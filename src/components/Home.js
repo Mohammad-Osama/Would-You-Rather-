@@ -5,11 +5,13 @@ import { connect } from 'react-redux'
 
 
 
-const panes = ()=> { [
+const panes = (answeredQuestions)=> { 
+    const passedData = answeredQuestions
+    return [
     { menuItem: 'Answered Questions', render: () => 
             <Tab.Pane>
-                {answeredQuestions.map((x)=>
-                  (  <UserInfo/>   )       )  }    //  
+                {passedData.map((x)=>
+                  (  <UserInfo/>   )       )  }   
             </Tab.Pane> },
 
 
@@ -23,7 +25,7 @@ class Home extends Component {
                  all in grid ? */
                      
     render() { 
-        const {answeredQuestions}= this.props.answeredQuestions       
+        const answeredQuestions= this.props.answeredQuestions       
         return (    
                         
             <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions)} />    

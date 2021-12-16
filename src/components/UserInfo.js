@@ -9,10 +9,11 @@ import { Card , Button  } from 'react-bootstrap'
     render() {
         console.log( "UserInfo props " + this.props) 
         const authedUser = this.props.authedUser 
+         // const { user } = this.props;
         return (
             <div>
                 <Card >
-                    <Card.Img style={{ height: 100, width: 100 }} variant="right" src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
+                    <Card.Img style={{ height: 100, width: 100 }} variant="right" src={this.props.users.avatarURL} />
                     <Card.Body>
                         <Card.Title>{this.props.users.name +' asks'}</Card.Title>
                         <Card.Text>
