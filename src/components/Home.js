@@ -5,16 +5,21 @@ import { connect } from 'react-redux'
 
 
 
-const panes = (answeredQuestions)=> { 
-    const passedData = answeredQuestions
+const panes = (answeredQuestions,unansweredQuestions)=> { 
+    const passedData1 = answeredQuestions
+    const passedData2 = unansweredQuestions
     return [
-            { menuItem: 'Answered Questions', render: () => 
-                <Tab.Pane>
-                    {passedData.map((x)=>
+            { menuItem: 'Answered Questions', render: () => //rendeing Userinfo for each answered question
+                <Tab.Pane> 
+                    {passedData1.map((x)=> // author prop passed to render the right Userinfo
                         (  <UserInfo  author = {x.author} />   )       )  }   
                 </Tab.Pane> },
 
-            { menuItem: 'Un Answered Questions', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+            { menuItem: 'Un Answered Questions', render: () => //rendeing Userinfo for each unanswered question
+                <Tab.Pane>
+                     {passedData2.map((x)=>
+                        (  <UserInfo  author = {x.author} />   )       )  } 
+                </Tab.Pane> },
     
   ] }
 class Home extends Component {
@@ -24,22 +29,28 @@ class Home extends Component {
                  all in grid ? */
                      
     render() { 
-        const answeredQuestions= this.props.answeredQuestions       
-        return (    
+        const answeredQuestions= this.props.answeredQuestions 
+        const unansweredQuestions = this.props.unansweredQuestions      
+        return ( // passing down answered and unanswered props to the panes 
                         
-            <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions)} />    
+            <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions,unansweredQuestions)} />    
         )
     }
 }
 
 function mapStateToProps ({users , authedUser , questions }) { 
     
-    const answeredId = Object.keys(users[authedUser].answers) 
-    const answeredQuestions = Object.values(questions).filter(
-                                    (question) => !answeredId.includes(question.id))
+    const answeredId = Object.keys(users[authedUser].answers)  // ids of the answered questions 
+    const answeredQuestions = Object.values(questions).filter( //filtering questions that matches answered questions 
+                                    (question) => answeredId.includes(question.id))
                                     .sort((a, b) => b.timestamp - a.timestamp)
+
+    const unansweredQuestions = Object.values(questions).filter( //filtering questions that doesnt match answered questions
+                                    (question) => !answeredId.includes(question.id))
+                                    .sort((a, b) => b.timestamp - a.timestamp)                                
     return {
         answeredQuestions : answeredQuestions,
+        unansweredQuestions : unansweredQuestions ,
         users ,
         authedUser
   }

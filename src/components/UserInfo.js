@@ -31,7 +31,7 @@ import { Card , Button  } from 'react-bootstrap'
     }
 }
 
-function mapStateToProps({ users } , props ) {
+function mapStateToProps({ users } , props ) { //props thats passed from Home
       return {
       users : users[props.author]
     }
