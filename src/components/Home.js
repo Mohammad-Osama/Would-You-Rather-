@@ -14,7 +14,8 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
                     {passedData1.map((x)=> // author prop passed to render the right Userinfo
                         (  <UserInfo  author = {x.author}
                                       //  text = {x.optionOne.text} 
-                                      id  = {x.id}                       
+                                      id  = {x.id}  
+                                      status = "anwsered"                     
                                                                     />   )       )  }   
                 </Tab.Pane> },
 
@@ -23,7 +24,7 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
                      {passedData2.map((x)=>
                         (  <UserInfo  author = {x.author} 
                                       id  = {x.id} 
-                        
+                                      status = "unanwsered"
                                                 />   )       )  } 
                 </Tab.Pane> },
     

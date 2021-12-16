@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Route , Routes } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
+import ViewQuesion from './ViewQuesion'
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
           this.props.authedUser
           ? <Routes> 
                   <Route exact path='/' element={<Home/>} />
+                  <Route exact path='/ViewQuesion' element={<ViewQuesion/>} />
             </Routes>           
           : <Login />
     )

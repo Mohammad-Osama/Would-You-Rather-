@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card , Button  } from 'react-bootstrap'
-
+import { Button, Card, Image } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
  class UserInfo extends Component {
@@ -13,17 +14,26 @@ import { Card , Button  } from 'react-bootstrap'
         return (
             <div>
                 <Card >
-                    <Card.Img style={{ height: 100, width: 100 }} variant="right" src={this.props.users.avatarURL} />
-                    <Card.Body>
-                        <Card.Title>{this.props.users.name +' asks'}</Card.Title>
-                        <Card.Text>
-                        {this.props.questions.optionOne.text }
-                        </Card.Text>
-                        <Button variant="primary" >
-                                Go somewhere
-                         </Button>
+                    <Card.Content compact>  
+                        <Image src={this.props.users.avatarURL} floated="right" size='large' circular />
+
+                    
+                    
+                        <Card.Header>{this.props.users.name +' asks'}</Card.Header>
+                        <Card.Description>                          
+                          <Message compact size='large'>
+                                    {this.props.questions.optionOne.text }                                         
+                                    </Message>
+                            <Card.Meta compact>Or</Card.Meta>
+                                   
+                        </Card.Description>
+                            <Button as={Link} to='/ViewQuesion' fluid  basic color='green'
+                                                                >
+                                View Poll
+                            </Button>
                         
-                    </Card.Body>
+                   
+                    </Card.Content>
                 </Card>
                     
             </div>
@@ -33,8 +43,8 @@ import { Card , Button  } from 'react-bootstrap'
 
 function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
       return {
-      users : users[props.author] , 
-      questions : questions[props.id]
+      users : users[props.author] ,   // user data from the passed author
+      questions : questions[props.id]  // question data from the passed id 
     }
   }
 
