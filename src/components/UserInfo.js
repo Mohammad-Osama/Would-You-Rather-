@@ -31,9 +31,9 @@ import { Card , Button  } from 'react-bootstrap'
     }
 }
 
-function mapStateToProps({ users , authedUser  }) {
+function mapStateToProps({ users } , props ) {
       return {
-      users : users[authedUser]
+      users : users[props.author]
     }
   }
 

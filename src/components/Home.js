@@ -8,14 +8,13 @@ import { connect } from 'react-redux'
 const panes = (answeredQuestions)=> { 
     const passedData = answeredQuestions
     return [
-    { menuItem: 'Answered Questions', render: () => 
-            <Tab.Pane>
-                {passedData.map((x)=>
-                  (  <UserInfo/>   )       )  }   
-            </Tab.Pane> },
+            { menuItem: 'Answered Questions', render: () => 
+                <Tab.Pane>
+                    {passedData.map((x)=>
+                        (  <UserInfo  author = {x.author} />   )       )  }   
+                </Tab.Pane> },
 
-
-    { menuItem: 'Un Answered Questions', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+            { menuItem: 'Un Answered Questions', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
     
   ] }
 class Home extends Component {
