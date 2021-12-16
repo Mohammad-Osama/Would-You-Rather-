@@ -17,7 +17,7 @@ import { Card , Button  } from 'react-bootstrap'
                     <Card.Body>
                         <Card.Title>{this.props.users.name +' asks'}</Card.Title>
                         <Card.Text>
-                            this.props.body
+                        {this.props.questions.optionOne.text }
                         </Card.Text>
                         <Button variant="primary" >
                                 Go somewhere
@@ -31,9 +31,10 @@ import { Card , Button  } from 'react-bootstrap'
     }
 }
 
-function mapStateToProps({ users } , props ) { //props thats passed from Home
+function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
       return {
-      users : users[props.author]
+      users : users[props.author] , 
+      questions : questions[props.id]
     }
   }
 

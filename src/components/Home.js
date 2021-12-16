@@ -12,13 +12,19 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
             { menuItem: 'Answered Questions', render: () => //rendeing Userinfo for each answered question
                 <Tab.Pane> 
                     {passedData1.map((x)=> // author prop passed to render the right Userinfo
-                        (  <UserInfo  author = {x.author} />   )       )  }   
+                        (  <UserInfo  author = {x.author}
+                                      //  text = {x.optionOne.text} 
+                                      id  = {x.id}                       
+                                                                    />   )       )  }   
                 </Tab.Pane> },
 
             { menuItem: 'Un Answered Questions', render: () => //rendeing Userinfo for each unanswered question
                 <Tab.Pane>
                      {passedData2.map((x)=>
-                        (  <UserInfo  author = {x.author} />   )       )  } 
+                        (  <UserInfo  author = {x.author} 
+                                      id  = {x.id} 
+                        
+                                                />   )       )  } 
                 </Tab.Pane> },
     
   ] }
