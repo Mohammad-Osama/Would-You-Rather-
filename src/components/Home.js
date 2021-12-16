@@ -13,9 +13,10 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
                 <Tab.Pane> 
                     {passedData1.map((x)=> // author prop passed to render the right Userinfo
                         (  <UserInfo  author = {x.author}
+                                      key= {x.id}  
                                       //  text = {x.optionOne.text} 
                                       id  = {x.id}  
-                                      status = "anwsered"                     
+                                      status =  'anwsered'                     
                                                                     />   )       )  }   
                 </Tab.Pane> },
 
@@ -23,8 +24,9 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
                 <Tab.Pane>
                      {passedData2.map((x)=>
                         (  <UserInfo  author = {x.author} 
+                                      key= {x.id}
                                       id  = {x.id} 
-                                      status = "unanwsered"
+                                      status =  'unanwsered' 
                                                 />   )       )  } 
                 </Tab.Pane> },
     

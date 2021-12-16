@@ -24,13 +24,15 @@ import { Link } from 'react-router-dom'
                           <Message compact size='large'>
                                     {this.props.questions.optionOne.text }                                         
                                     </Message>
-                            <Card.Meta compact>Or</Card.Meta>
+                            <Card.Meta >Or</Card.Meta>
                                    
                         </Card.Description>
-                            <Button as={Link} to='/ViewQuesion' fluid  basic color='green'
-                                                                >
-                                View Poll
-                            </Button>
+                            <Link to='/ViewQuesion' state={{ status: this.props.status }} >
+                                <Button  fluid  basic color='green'
+                                                                  >
+                                    View Poll
+                                </Button>
+                            </Link>
                         
                    
                     </Card.Content>
@@ -44,7 +46,8 @@ import { Link } from 'react-router-dom'
 function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
       return {
       users : users[props.author] ,   // user data from the passed author
-      questions : questions[props.id]  // question data from the passed id 
+      questions : questions[props.id] , // question data from the passed id 
+      status : props.status  
     }
   }
 
