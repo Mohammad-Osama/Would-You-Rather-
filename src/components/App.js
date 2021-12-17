@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   
-  render() { // login redeners incase no authed user 
+  render() { // login renders incase no authed user 
     return (
           this.props.authedUser
           ? <Routes> 
