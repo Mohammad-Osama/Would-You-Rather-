@@ -16,7 +16,8 @@ const panes = (answeredQuestions,unansweredQuestions)=> {
                                       key= {x.id}  
                                       //  text = {x.optionOne.text} 
                                       id  = {x.id}  
-                                      status =  'anwsered'                     
+                                      status =  'anwsered'   
+                                                        
                                                                     />   )       )  }   
                 </Tab.Pane> },
 

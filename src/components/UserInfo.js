@@ -27,7 +27,9 @@ import { Link } from 'react-router-dom'
                             <Card.Meta >Or</Card.Meta>
                                    
                         </Card.Description>
-                            <Link to='/ViewQuesion' state={{ status: this.props.status }} >
+                            <Link to='/ViewQuesion' state={{ status: this.props.status ,
+                                                             CurrentQuestion :this.props.questions ,
+                                                             img :this.props.users.avatarURL  }} >
                                 <Button  fluid  basic color='green'
                                                                   >
                                     View Poll
