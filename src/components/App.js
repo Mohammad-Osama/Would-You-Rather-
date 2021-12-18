@@ -8,6 +8,8 @@ import ViewQuesion from './ViewQuesion'
 import QuestionDetails from './QuestionDetails'
 import { Grid , Container } from 'semantic-ui-react';
 import NavBar from './NavBar'
+import NewQuestion from './NewQuestion'
+import Leaderboard from './Leaderboard'
 
 
 class App extends Component {
@@ -27,6 +29,11 @@ class App extends Component {
                   <Route exact path='/' element={<Home/>} />
                   <Route exact path='/ViewQuesion' element={<ViewQuesion/>} />
                   <Route exact path='/QuestionDetails' element={<QuestionDetails/>} />
+                  <Route exact path='/NewQuestion' element={<NewQuestion/>} />
+                  <Route exact path='/Leaderboard' element={<Leaderboard/>} />
+
+
+
                </Routes>  
             </Grid>  
            </Container>         

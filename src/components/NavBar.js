@@ -1,47 +1,63 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Menu } from 'semantic-ui-react'
+import { Menu , Image} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
+
+
 
  class NavBar extends Component {
-    state = {}
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    logOut = () => {
+        // e.preventDefault() 
+        this.props.dispatch(setAuthedUser(null))          
+    } 
+    
 
     render() {
-        const { activeItem } = this.state
-
+       // const { activeItem } = this.state
+        const { authedUser, users } = this.props;
         return (
-                <Menu>
+                <Menu  >
                     <Menu.Item
-                    name='browse'
-                    active={activeItem === 'browse'}
-                    onClick={this.handleItemClick}
+                    name='Home'
+                    as={Link} exact to="/" 
                     >
-                    Browse
+                    Home
                     </Menu.Item>
 
                     <Menu.Item
-                    name='submit'
-                    active={activeItem === 'submit'}
-                    onClick={this.handleItemClick}
+                    name='New Question'
+                    as={Link} exact to="/NewQuestion"
+                    
                     >
-                    Submit
+                    New Question
+                    </Menu.Item>
+                    <Menu.Item
+                    name='Leaderboard'
+                    as={Link} exact to="/Leaderboard"
+                    
+                    >
+                    Leaderboard
                     </Menu.Item>
 
                     <Menu.Menu position='right'>
                     <Menu.Item
-                        name='signup'
-                        active={activeItem === 'signup'}
-                        onClick={this.handleItemClick}
+                        
                     >
-                        Sign Up
+                        <Image
+                  src={users[authedUser].avatarURL}
+                  avatar
+                
+                />
+                        {users[authedUser].name}
                     </Menu.Item>
 
                     <Menu.Item
-                        name='help'
-                        active={activeItem === 'help'}
-                        onClick={this.handleItemClick}
+                        name='Log out'
+                        
+                        onClick={this.logOut}
                     >
-                        Help
+                        Log out
                     </Menu.Item>
                     </Menu.Menu>
                 </Menu>
