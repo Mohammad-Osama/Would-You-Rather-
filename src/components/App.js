@@ -6,6 +6,9 @@ import Login from './Login'
 import Home from './Home'
 import ViewQuesion from './ViewQuesion'
 import QuestionDetails from './QuestionDetails'
+import { Grid , Container } from 'semantic-ui-react';
+import NavBar from './NavBar'
+
 
 class App extends Component {
 
@@ -17,12 +20,19 @@ class App extends Component {
   render() { // login renders incase no authed user 
     return (
           this.props.authedUser
-          ? <Routes> 
+          ? <Container>
+              <NavBar/>
+              <Grid centered padded="vertically">
+                <Routes> 
                   <Route exact path='/' element={<Home/>} />
                   <Route exact path='/ViewQuesion' element={<ViewQuesion/>} />
                   <Route exact path='/QuestionDetails' element={<QuestionDetails/>} />
-            </Routes>           
-          : <Login />
+               </Routes>  
+            </Grid>  
+           </Container>         
+          : <Grid centered padded="vertically">
+             <Login  />
+            </Grid>
     )
   }
 }
