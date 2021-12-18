@@ -28,6 +28,8 @@ export function handleQuestionAnswer( authedUser, qid , answer ) {
                 return (dispatch)=>{
                     dispatch(addAnswerUser( authedUser, qid , answer ))
                     dispatch(submitAnswerQuestion( authedUser, qid , answer ))            
-                return saveQuestionAnswer( authedUser, qid , answer )
+                return saveQuestionAnswer( authedUser, qid , answer ).catch(e => {
+                    console.warn('Error in handleSaveQuestionAnswer:', e);
+                  });
                 }
   }
