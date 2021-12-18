@@ -14,7 +14,17 @@ export function addAnswerUser( authedUser, qid , answer ) {
         authedUser,
         qid,
         answer
-    };
+    }
+  }
+
+  export const ADD_QUESTION_USER = 'ADD_QUESTION_USER'
+
+  export function addQuestionUser( NewQid , author ) {
+    return {
+      type: ADD_QUESTION_USER,                     
+        NewQid,
+        author
+    }
   }
 
 

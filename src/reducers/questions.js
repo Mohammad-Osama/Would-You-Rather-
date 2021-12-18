@@ -1,4 +1,5 @@
 import { RECEIVE_QUESTIONS , SUBMIT_ANSWER_QUESTION  } from "../actions/questions"
+import { ADD_QUESTION } from "../actions/questions"
 
 
 
@@ -10,6 +11,7 @@ export default function questions (state = {}, action) {
           ...state,
           ...action.questions
         }
+
         case SUBMIT_ANSWER_QUESTION :
            const {authedUser, qid , answer} = action
         return {
@@ -22,6 +24,15 @@ export default function questions (state = {}, action) {
                           }
                   }
                 }
+          case ADD_QUESTION :   
+          const { question } = action
+          return {
+            ...state,
+            [question.id]: question
+          }
+
+
+
       default :
         return state
     }
