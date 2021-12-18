@@ -19,12 +19,11 @@ export function addAnswerUser( authedUser, qid , answer ) {
 
   export const ADD_QUESTION_USER = 'ADD_QUESTION_USER'
 
-  export function addQuestionUser( id , author ) {
+  export function addQuestionUser( {id , author} ) {
     return {
-      type: ADD_QUESTION_USER,
-        addaction :{                     
-           id  ,
-           author}
+      type: ADD_QUESTION_USER,                     
+          id  ,
+        author
     }
   }
 
