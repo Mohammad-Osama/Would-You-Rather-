@@ -12,8 +12,8 @@ export const SUBMIT_ANSWER_QUESTION = 'SUBMIT_ANSWER_QUESTION'
 export function submitAnswerQuestion( authedUser, qid , answer ) {
     return {
       type: SUBMIT_ANSWER_QUESTION,
-                 details: { authedUser,
-                            qid,
-                            answer}
+      authedUser,
+      qid,
+      answer
     }
 }

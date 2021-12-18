@@ -44,7 +44,7 @@ import { handleQuestionAnswer } from '../actions/shared'
     
     // onsubmit function  ? 
     // console.log (this.props )
-    if (status==="anwsered") 
+    if (status==="unanwsered") 
             return (
             
             <Card >
@@ -72,10 +72,10 @@ import { handleQuestionAnswer } from '../actions/shared'
         </Card>
 
                 )
-    if (status==="unanwsered") 
+    if (status==="anwsered") 
     return (
             <div> 
-                <p>unanwsered </p>
+                <p>anwsered </p>
             </div>
                 )
 }

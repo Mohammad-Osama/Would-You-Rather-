@@ -10,11 +10,10 @@ export const ADD_ANSWER_USER = 'ADD_ANSWER_USER';
 
 export function addAnswerUser( authedUser, qid , answer ) {
     return {
-      type: ADD_ANSWER_USER,
-                      details: { 
-                            authedUser,
-                            qid,
-                            answer}
+      type: ADD_ANSWER_USER,                     
+        authedUser,
+        qid,
+        answer
     };
   }
 

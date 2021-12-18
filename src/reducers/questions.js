@@ -11,7 +11,7 @@ export default function questions (state = {}, action) {
           ...action.questions
         }
         case SUBMIT_ANSWER_QUESTION :
-           const {authedUser, qid , answer} = action.details
+           const {authedUser, qid , answer} = action
         return {
           ...state,
           [qid]: {
