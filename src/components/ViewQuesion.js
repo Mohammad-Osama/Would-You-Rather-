@@ -8,6 +8,7 @@ import { handleQuestionAnswer } from '../actions/shared'
 import { useHistory } from "react-router-dom";
 import QuestionDetails from './QuestionDetails'
 import useForceUpdate from 'use-force-update';
+import { Link } from 'react-router-dom'
 
 
 
@@ -29,11 +30,14 @@ import useForceUpdate from 'use-force-update';
        // const authedUser  = props.authedUser
        // const {input} = option
         props.dispatch(handleQuestionAnswer(props.authedUser , CurrentQuestion.id , option )) 
-        setstatus("anwsered")
+      
+        setstatus("staged")
         
       }
      
     };
+   // const handleClick = (e)=>{setstatus("anwsered")
+   // console.log (status)}
   
     
     const {  CurrentQuestion , img } = location.state
@@ -72,13 +76,23 @@ import useForceUpdate from 'use-force-update';
                                 <span>{CurrentQuestion.optionTwo.text}</span>
                                 </Label>
                             </div>
-                            <Button type="submit">Submit</Button>
+                            <Button type="submit" onClick >Submit</Button>
                         </Form>
                     </Card.Description>   
              </Card.Content>
         </Card>
 
-                )
+        )
+    if (status==="staged") 
+        
+              return(
+                    <div>  
+                      <span> You answered  </span>
+                      <Link to='/'>
+                        <Button basic color='red'> Go back  </Button>
+                      </Link>
+                    </div>
+              )
     if (status==="anwsered") 
     return (
 
