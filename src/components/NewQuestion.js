@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Input ,Button , Container , Header} from 'semantic-ui-react'
 import { saveNewQuestion } from '../actions/shared'
+import authedUser from '../reducers/authedUser'
 
 
 
@@ -26,7 +27,8 @@ import { saveNewQuestion } from '../actions/shared'
     handleSubmit = (e)=>{
         e.preventDefault()
         const {optionOneText , optionTwoText } = this.state
-        this.props.dispatch(saveNewQuestion(optionOneText , optionTwoText))
+        const {authedUser} = this.props
+        this.props.dispatch(saveNewQuestion(optionOneText , optionTwoText, authedUser))
 
     }
 

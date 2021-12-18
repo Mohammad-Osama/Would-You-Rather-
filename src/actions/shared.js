@@ -34,9 +34,9 @@ export function handleQuestionAnswer( authedUser, qid , answer ) {
                              }
   }
 
-  export function saveNewQuestion(question) {
+  export function saveNewQuestion(optionOneText , optionTwoText, author) {
     return (dispatch) => {
-      return saveQuestion({ question }).then(
+      return saveQuestion({ optionOneText , optionTwoText, author }).then(
         question => {
           dispatch(addQuestion(question));
           dispatch(addQuestionUser(question));
