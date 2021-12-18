@@ -5,7 +5,9 @@ import { showLoading , hideLoading } from "react-redux-loading";
 import { addAnswerUser } from "./users";
 import { submitAnswerQuestion } from "./questions";
 import { saveQuestionAnswer } from '../utils/api';
-
+import { saveQuestion } from "../utils/api";
+import { addQuestionUser } from "./users";
+import { addQuestion } from "./questions";
 
 
 export function handleInitialData (){
@@ -28,8 +30,25 @@ export function handleQuestionAnswer( authedUser, qid , answer ) {
                 return (dispatch)=>{
                     dispatch(addAnswerUser( authedUser, qid , answer ))
                     dispatch(submitAnswerQuestion( authedUser, qid , answer ))            
-                return saveQuestionAnswer( authedUser, qid , answer ).catch(e => {
-                    console.warn('Error in handleSaveQuestionAnswer:', e);
-                  });
-                }
+                return saveQuestionAnswer( authedUser, qid , answer )
+                             }
   }
+
+  export function saveNewQuestion(question) {
+    return (dispatch) => {
+      return saveQuestion({ question }).then(
+        question => {
+          dispatch(addQuestion(question));
+          dispatch(addQuestionUser(question));
+        }
+      );
+    };
+  }
+
+
+
+
+
+
+
+
