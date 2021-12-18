@@ -5,6 +5,7 @@ import { Route , Routes } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
 import ViewQuesion from './ViewQuesion'
+import QuestionDetails from './QuestionDetails'
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
           ? <Routes> 
                   <Route exact path='/' element={<Home/>} />
                   <Route exact path='/ViewQuesion' element={<ViewQuesion/>} />
+                  <Route exact path='/QuestionDetails' element={<QuestionDetails/>} />
             </Routes>           
           : <Login />
     )

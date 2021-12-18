@@ -5,13 +5,17 @@ import { Button, Card, Image, Radio ,Label, Input } from 'semantic-ui-react'
 import { Message } from 'semantic-ui-react'
 import { Form, Checkbox } from 'semantic-ui-react'
 import { handleQuestionAnswer } from '../actions/shared'
+import { useHistory } from "react-router-dom";
+import QuestionDetails from './QuestionDetails'
+import useForceUpdate from 'use-force-update';
 
 
 
 
    function ViewQuesion(props) {
-    
+    const location = useLocation()
     const [option, setOption] = React.useState();
+    const [status, setstatus] = React.useState(location.state.status);
     const handleChange = e => {
       const target = e.target;
       if (target.checked) {
@@ -25,18 +29,21 @@ import { handleQuestionAnswer } from '../actions/shared'
        // const authedUser  = props.authedUser
        // const {input} = option
         props.dispatch(handleQuestionAnswer(props.authedUser , CurrentQuestion.id , option )) 
-
+        setstatus("anwsered")
+        
       }
-
+     
     };
   
-    const location = useLocation()
-    const { status , CurrentQuestion , img } = location.state
-    console.log (status + CurrentQuestion.id + img )
-    console.log (location.state)
+    
+    const {  CurrentQuestion , img } = location.state
+     //let status = location.state.status
+    console.log ( 'status-->' +  status + " id  " +  CurrentQuestion.id + img )
+    console.log ( "location state " +location.state.status)
     const question= location.state.CurrentQuestion
     console.log (CurrentQuestion)
     console.log (question)
+    console.log (status)
     
     //const authedUser= this.props
    //console.log (authedUser)
@@ -74,10 +81,13 @@ import { handleQuestionAnswer } from '../actions/shared'
                 )
     if (status==="anwsered") 
     return (
-            <div> 
-                <p>anwsered </p>
-            </div>
-                )
+
+          <QuestionDetails question ={CurrentQuestion} 
+                            img = {img}
+          
+                                                                  />
+
+                   )
 }
 
      //   function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
