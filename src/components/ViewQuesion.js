@@ -2,8 +2,7 @@ import React  , {useState} from 'react'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { Button, Card, Image, Radio ,Label, Input } from 'semantic-ui-react'
-import { Message } from 'semantic-ui-react'
-import { Form, Checkbox } from 'semantic-ui-react'
+import { Form, Message  , Grid , Container} from 'semantic-ui-react'
 import { handleQuestionAnswer } from '../actions/shared'
 import { useHistory } from "react-router-dom";
 import QuestionDetails from './QuestionDetails'
@@ -88,21 +87,20 @@ import { Link } from 'react-router-dom'
         )
     if (status==="staged") 
         
-              return(
-                <QuestionDetails question ={props.questions[CurrentQuestion.id]} 
-                img = {img}
-
-                                                      />
+              return( // showing question details from the new state 
+                <Grid  celled centered padded="vertically">
+                  <QuestionDetails question ={props.questions[CurrentQuestion.id]} 
+                                                  img = {img} />
+                  <Link to='/'>
+                      <Button basic color='red'> Go back  </Button>
+                  </Link>
+                </Grid>
               )
     if (status==="anwsered") 
     return (
-
           <QuestionDetails question ={CurrentQuestion} 
-                            img = {img}
-          
-                                                                  />
-
-                   )
+                            img = {img}/>
+               )
 }
 
      //   function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
