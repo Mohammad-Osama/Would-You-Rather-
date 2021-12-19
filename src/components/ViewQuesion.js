@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom'
     };
     const handleSubmit = e => {
       e.preventDefault();
-      console.log(option);
+      console.log( "option==== >" +option);
       if (option) {
        // const authedUser  = props.authedUser
        // const {input} = option

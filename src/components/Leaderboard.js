@@ -11,7 +11,7 @@ import { Progress, Card, Image, Grid , Message ,Header , Radio ,Label, Input, Gr
                 <Grid.Column>
                     {this.props.NewData.map((user) =>
                 
-                        <Card color='blue' >
+                        <Card color='blue' key={user.id} >
                             <Card.Content >  
                                 
                                 <Image src={user.avatarURL}  floated ="right" size='tiny' circular /> 
@@ -21,7 +21,7 @@ import { Progress, Card, Image, Grid , Message ,Header , Radio ,Label, Input, Gr
                                             
                                     <Card.Description>
                                         <Header size = "huge"> Score : </Header>     
-                                        <Label size = "huge"  pointing = "right" color="olive ">
+                                        <Label size = "huge"  pointing = "right" color="olive">
                                             {user.totalScore}            
                                         </Label>            
                                                         
@@ -49,7 +49,8 @@ function mapStateToProps({ users }) {
             avatarURL: user.avatarURL,
             ScoreAnswer: ScoreAnswer,
             ScoreQuestion: ScoreQuestion,
-            totalScore: totalScore 
+            totalScore: totalScore,
+            id: user.id
         }
 
     }
