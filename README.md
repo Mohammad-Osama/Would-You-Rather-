@@ -25,6 +25,7 @@ once thats done , open the terminal and type : npm start  ; and you will see the
 
 
 ## Refernces-used
+Udacity`s Chriper starter code was used to start this app
 
 https://ui.dev/react-router-pass-props-to-link/
 https://codesandbox.io/s/cmie8?module=/example.js&file=/example.js:446-488

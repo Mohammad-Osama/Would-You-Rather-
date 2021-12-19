@@ -5,8 +5,8 @@ export default class Error extends Component {
     render() {
         return (
             <Container textAlign="center">
-              <Header size = "huge">404 Error !</Header>
-              <span> Unvalid action ! </span>
+                <Header size="huge">404 Error !</Header>
+                <span> Unvalid action ! </span>
             </Container>
         )
     }

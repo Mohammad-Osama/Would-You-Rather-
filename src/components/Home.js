@@ -5,65 +5,70 @@ import { connect } from 'react-redux'
 
 
 
-const panes = (answeredQuestions,unansweredQuestions)=> { 
+const panes = (answeredQuestions, unansweredQuestions) => {
     const passedData1 = answeredQuestions
     const passedData2 = unansweredQuestions
     return [
-            { menuItem: 'Answered Questions', render: () => //rendeing Userinfo for each answered question
-                <Tab.Pane> 
-                    {passedData1.map((x)=> // author prop passed to render the right Userinfo
-                        (  <UserInfo  author = {x.author}
-                                      key= {x.id}  
-                                      //  text = {x.optionOne.text} 
-                                      id  = {x.id}  
-                                      status =  'anwsered'   
-                                                        
-                                                                    />   )       )  }   
-                </Tab.Pane> },
-
-            { menuItem: 'Un Answered Questions', render: () => //rendeing Userinfo for each unanswered question
+        {
+            menuItem: 'Answered Questions', render: () => //rendeing Userinfo for each answered question
                 <Tab.Pane>
-                     {passedData2.map((x)=>
-                        (  <UserInfo  author = {x.author} 
-                                      key= {x.id}
-                                      id  = {x.id} 
-                                      status =  'unanwsered' 
-                                                />   )       )  } 
-                </Tab.Pane> },
-    
-  ] }
+                    {passedData1.map((x) => // author prop passed to render the right Userinfo
+                    (<UserInfo author={x.author}
+                        key={x.id}
+                        //  text = {x.optionOne.text} 
+                        id={x.id}
+                        status='anwsered'
+
+                    />))}
+                </Tab.Pane>
+        },
+
+        {
+            menuItem: 'Un Answered Questions', render: () => //rendeing Userinfo for each unanswered question
+                <Tab.Pane>
+                    {passedData2.map((x) =>
+                    (<UserInfo author={x.author}
+                        key={x.id}
+                        id={x.id}
+                        status='unanwsered'
+                    />))}
+                </Tab.Pane>
+        },
+
+    ]
+}
 class Home extends Component {
-     /*render nav bar   */
+    /*render nav bar   */
     /*render home view - tab with answered + unanswered
                 props for each tab 
                  all in grid ? */
-                     
-    render() { 
-        const answeredQuestions= this.props.answeredQuestions 
-        const unansweredQuestions = this.props.unansweredQuestions      
+
+    render() {
+        const answeredQuestions = this.props.answeredQuestions
+        const unansweredQuestions = this.props.unansweredQuestions
         return ( // passing down answered and unanswered props to the panes 
-                        
-            <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions,unansweredQuestions)} />    
+
+            <Tab menu={{ secondary: true, pointing: true }} panes={panes(answeredQuestions, unansweredQuestions)} />
         )
     }
 }
 
-function mapStateToProps ({users , authedUser , questions }) { 
-    
+function mapStateToProps({ users, authedUser, questions }) {
+
     const answeredId = Object.keys(users[authedUser].answers)  // ids of the answered questions 
     const answeredQuestions = Object.values(questions).filter( //filtering questions that matches answered questions 
-                                    (question) => answeredId.includes(question.id))
-                                    .sort((a, b) => b.timestamp - a.timestamp)
+        (question) => answeredId.includes(question.id))
+        .sort((a, b) => b.timestamp - a.timestamp)
 
     const unansweredQuestions = Object.values(questions).filter( //filtering questions that doesnt match answered questions
-                                    (question) => !answeredId.includes(question.id))
-                                    .sort((a, b) => b.timestamp - a.timestamp)                                
+        (question) => !answeredId.includes(question.id))
+        .sort((a, b) => b.timestamp - a.timestamp)
     return {
-        answeredQuestions : answeredQuestions,
-        unansweredQuestions : unansweredQuestions ,
-        users ,
+        answeredQuestions: answeredQuestions,
+        unansweredQuestions: unansweredQuestions,
+        users,
         authedUser
-  }
+    }
 }
 
 
