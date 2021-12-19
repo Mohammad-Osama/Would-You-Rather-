@@ -1,28 +1,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Progress, Card, Image, Message ,Header , Radio ,Label, Input } from 'semantic-ui-react'
+import { Progress, Card, Image, Grid , Message ,Header , Radio ,Label, Input, GridColumn } from 'semantic-ui-react'
 
 
  class Leaderboard extends Component {
     render() {
         console.log (this.props)
         return (
-            <Card >
-            <Card.Content compact>  
+            <Grid centered verticalAlign = "top">  
+                <Grid.Column>
+                    {this.props.NewData.map((user) =>
                 
-               <Image src="https://react.semantic-ui.com/images/avatar/large/matthew.png"  floated ="right" size='tiny' circular /> 
-               <Card.Header>header 
-                        </Card.Header>
-                        
-                   <Card.Description>
-                    <Header size = "huge"> Score : </Header>     <Label size = "huge"  pointing = "right" color="olive "> 45 </Label>            
-                                       
-                    <Progress  progress />
-                        
-                    <Progress  progress />
-                   </Card.Description>   
-            </Card.Content>
-       </Card>
+                        <Card >
+                            <Card.Content >  
+                                
+                                <Image src={user.avatarURL}  floated ="right" size='tiny' circular /> 
+                                <Card.Header>
+                                    {user.name}
+                                </Card.Header>
+                                            
+                                    <Card.Description>
+                                        <Header size = "huge"> Score : </Header>     
+                                        <Label size = "huge"  pointing = "right" color="olive ">
+                                            {user.totalScore}            
+                                        </Label>            
+                                                        
+                                        <Message>Answered Questions  <Label  size = "big">{user.ScoreAnswer}</Label></Message>
+                                            
+                                        <Message>Created Questions    <Label  size = "big">{user.ScoreQuestion}</Label></Message>
+                                    </Card.Description>   
+                            </Card.Content>
+                        </Card>
+            )}
+            </Grid.Column>
+       </Grid>
         )
     }
 }
@@ -34,7 +45,6 @@ function mapStateToProps({ users }) {
         const ScoreQuestion = user.questions.length
         const totalScore  = ScoreAnswer + ScoreQuestion
         return {
-            id: user.id ,
             name: user.name,
             avatarURL: user.avatarURL,
             ScoreAnswer: ScoreAnswer,

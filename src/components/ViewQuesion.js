@@ -61,7 +61,7 @@ import { Link } from 'react-router-dom'
             return (
             
             <Card >
-             <Card.Content compact>  
+             <Card.Content >  
                 <Image src={img} floated="left" size='tiny' circular /> 
                 <Card.Header>{CurrentQuestion.author +' asks'}</Card.Header>
                     <Card.Description>                          
@@ -88,7 +88,7 @@ import { Link } from 'react-router-dom'
     if (status==="staged") 
         
               return( // showing question details from the new state 
-                <Grid  celled centered padded="vertically">
+                <Grid  centered padded="vertically">
                   <QuestionDetails question ={props.questions[CurrentQuestion.id]} 
                                                   img = {img} />
                   <Link to='/'>

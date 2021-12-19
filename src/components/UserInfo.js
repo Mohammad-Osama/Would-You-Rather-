@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
         return (
             <div>
                 <Card >
-                    <Card.Content compact>  
+                    <Card.Content >  
                         <Image src={this.props.users.avatarURL} floated="right" size='large' circular />
 
                     
