@@ -29,9 +29,10 @@ import { Link } from 'react-router-dom'
       if (option) {
        // const authedUser  = props.authedUser
        // const {input} = option
-        props.dispatch(handleQuestionAnswer(props.authedUser , CurrentQuestion.id , option )) 
-      
+        const qqq =   props.dispatch(handleQuestionAnswer(props.authedUser , CurrentQuestion.id , option )) 
+        
         setstatus("staged")
+        console.log("qqq   "+qqq)
         
       }
      
@@ -48,6 +49,8 @@ import { Link } from 'react-router-dom'
     console.log (CurrentQuestion)
     console.log (question)
     console.log (status)
+    
+    console.log (" id === >" + CurrentQuestion.id )
     
     //const authedUser= this.props
    //console.log (authedUser)
@@ -86,12 +89,10 @@ import { Link } from 'react-router-dom'
     if (status==="staged") 
         
               return(
-                    <div>  
-                      <span> You answered  </span>
-                      <Link to='/'>
-                        <Button basic color='red'> Go back  </Button>
-                      </Link>
-                    </div>
+                <QuestionDetails question ={props.questions[CurrentQuestion.id]} 
+                img = {img}
+
+                                                      />
               )
     if (status==="anwsered") 
     return (
@@ -126,9 +127,10 @@ import { Link } from 'react-router-dom'
        // status : props.status  
      // }
    // }
-   function mapStateToProps({ authedUser } ) {
+   function mapStateToProps({ authedUser ,questions } ) {
     return {
-      authedUser : authedUser 
+      authedUser : authedUser ,
+      questions
     }
   }
        export default connect(mapStateToProps )(ViewQuesion)
