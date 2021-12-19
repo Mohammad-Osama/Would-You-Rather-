@@ -1,6 +1,6 @@
 import React  , {useState} from 'react'
 import { connect } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useLocation , Navigate   } from 'react-router-dom'
 import { Button, Card, Image, Radio ,Label, Input } from 'semantic-ui-react'
 import { Form, Message  , Grid , Container} from 'semantic-ui-react'
 import { handleQuestionAnswer } from '../actions/shared'
@@ -9,13 +9,19 @@ import QuestionDetails from './QuestionDetails'
 import useForceUpdate from 'use-force-update';
 import { Link } from 'react-router-dom'
 import { Routes, Route, useParams } from "react-router-dom";
-
+import Leaderboard from './Leaderboard'
+import Error from './Error'
 
 
    function ViewQuesion(props) {
-    //let {params} = useParams();
-   // console.log( "paraaaaaaaaaammmmm " + params.id)
+    ////let {params} = useParams();
+    ///if (params=null){ return (<Leaderboard> </Leaderboard>)}
+    // console.log( "paraaaaaaaaaammmmm " + params)
     const location = useLocation()
+     //   if (location.state.status=null){ <span> sdasdasd </span>}
+    //  if (!location.state.status) {<Navigate to="/Leaderboard">  </Navigate>  }
+    if (location.state === null){ return (<Error/>)}
+        console.log("location.status--->" + location.state.status)
     const [option, setOption] = React.useState();
     const [status, setstatus] = React.useState(location.state.status);
     const handleChange = e => {
@@ -103,6 +109,7 @@ import { Routes, Route, useParams } from "react-router-dom";
           <QuestionDetails question ={CurrentQuestion} 
                             img = {img}/>
                )
+    
 }
 
      //   function mapStateToProps({ users , questions } , props ) { //props thats passed from Home
