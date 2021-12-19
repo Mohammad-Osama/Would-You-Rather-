@@ -11,7 +11,7 @@ import { Progress, Card, Image, Grid , Message ,Header , Radio ,Label, Input, Gr
                 <Grid.Column>
                     {this.props.NewData.map((user) =>
                 
-                        <Card >
+                        <Card color='blue' >
                             <Card.Content >  
                                 
                                 <Image src={user.avatarURL}  floated ="right" size='tiny' circular /> 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, Image , Header } from 'semantic-ui-react'
 import { Message } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
@@ -21,16 +21,16 @@ import { Link } from 'react-router-dom'
                     
                         <Card.Header>{this.props.users.name +' asks'}</Card.Header>
                         <Card.Description>                          
-                          <Message compact size='large'>
-                                    {this.props.questions.optionOne.text }                                         
-                                    </Message>
-                            <Card.Meta >Or</Card.Meta>
+                            <Message compact size='large'>
+                                        {this.props.questions.optionOne.text }                                         
+                            </Message>
+                            <Header size = "small"> Or  </Header>
                                    
                         </Card.Description>
                             <Link to='/ViewQuesion' state={{ status: this.props.status ,
                                                              CurrentQuestion :this.props.questions ,
                                                              img :this.props.users.avatarURL  }} >
-                                <Button  fluid  basic color='green'
+                                <Button  fluid  basic color='blue'
                                                                   >
                                     View Poll
                                 </Button>

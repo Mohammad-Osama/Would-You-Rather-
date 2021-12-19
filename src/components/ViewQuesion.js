@@ -68,14 +68,14 @@ import { Link } from 'react-router-dom'
                         <Form onSubmit={handleSubmit}>
                             <div>
                                 <Label>
-                                <Input type="radio" value="optionOne" checked={option == 'optionOne'} 
-                                        onChange={handleChange} />
-                                <span>{CurrentQuestion.optionOne.text}</span>
+                                  <Input type="radio" value="optionOne" checked={option == 'optionOne'} 
+                                          onChange={handleChange} />
+                                  <span>{CurrentQuestion.optionOne.text}</span>
                                 </Label>
                                 <Label>
-                                <Input type="radio" value="optionTwo" checked={option == 'optionTwo'} 
-                                        onChange={handleChange} />
-                                <span>{CurrentQuestion.optionTwo.text}</span>
+                                  <Input type="radio" value="optionTwo" checked={option == 'optionTwo'} 
+                                          onChange={handleChange} />
+                                  <span>{CurrentQuestion.optionTwo.text}</span>
                                 </Label>
                             </div>
                             <Button type="submit" onClick >Submit</Button>

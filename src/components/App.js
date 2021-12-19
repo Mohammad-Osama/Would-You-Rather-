@@ -22,7 +22,7 @@ class App extends Component {
   render() { // login renders incase no authed user 
     return (
           this.props.authedUser
-          ? <Container>
+          ? <Container className = "app">
               <NavBar/>
               <Grid centered padded="vertically">
                 <Routes> 
