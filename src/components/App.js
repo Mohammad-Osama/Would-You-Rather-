@@ -27,7 +27,7 @@ class App extends Component {
               <Grid centered padded="vertically">
                 <Routes> 
                   <Route exact path='/' element={<Home/>} />
-                  <Route exact path='/ViewQuesion' element={<ViewQuesion/>} />
+                  <Route exact path='/questions/:id' element={<ViewQuesion/>} />
                   <Route exact path='/QuestionDetails' element={<QuestionDetails/>} />
                   <Route exact path='/NewQuestion' element={<NewQuestion/>} />
                   <Route exact path='/Leaderboard' element={<Leaderboard/>} />

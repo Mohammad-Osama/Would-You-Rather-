@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Progress, Card, Image,Message,Icon } from 'semantic-ui-react'
+import { withRouter } from "react-router";
 
  class QuestionDetails extends Component {
+  
+
     render() {
         const optionOneVotes = this.props.question.optionOne.votes.length
         const optionTwoVotes = this.props.question.optionTwo.votes.length
@@ -16,6 +19,11 @@ import { Progress, Card, Image,Message,Icon } from 'semantic-ui-react'
          // const userOption = Object.values
          const authedAnswer = this.props.users[authedUser].answers[thisQuestionID]
          console.log ( "authedAnswers ---- >   " +authedAnswer )
+       // const {match} = this.props.match 
+      // const id = this.props.match.params.id;
+       //  console.log(this.props.match.params.id)
+      // console.log ( "this.props.match.params.id ---- >   " +id )
+        
         return (
            
           <Card >
@@ -38,11 +46,14 @@ import { Progress, Card, Image,Message,Icon } from 'semantic-ui-react'
     }
 }
 
-function mapStateToProps({ authedUser ,questions , users} ,props ) {
+function mapStateToProps({ authedUser ,questions , users} ,   )   {
+  
+
     return {
       authedUser : authedUser ,
       questions  ,
-      users
+      users ,
+       
     }
   }
 export default connect(mapStateToProps)(QuestionDetails)

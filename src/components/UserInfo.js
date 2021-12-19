@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
     render() {
         console.log( "UserInfo props " + this.props) 
         const authedUser = this.props.authedUser 
+        const {id } = this.props.questions
+        console.log ( "neeee ------ >  " +  id)
          // const { user } = this.props;
         return (
             <div>
@@ -27,7 +29,7 @@ import { Link } from 'react-router-dom'
                             <Header size = "small"> Or  </Header>
                                    
                         </Card.Description>
-                            <Link to='/ViewQuesion' state={{ status: this.props.status ,
+                            <Link to={`/questions/${id}`} state={{ status: this.props.status ,
                                                              CurrentQuestion :this.props.questions ,
                                                              img :this.props.users.avatarURL  }} >
                                 <Button  fluid  basic color='blue'

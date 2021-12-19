@@ -55,7 +55,7 @@ function mapStateToProps({ users }) {
 
     }
     
-     ).sort((a, b) => a.totalScore - b.totalScore)
+     ).sort((a, b) => b.totalScore - a.totalScore)
 
 
 

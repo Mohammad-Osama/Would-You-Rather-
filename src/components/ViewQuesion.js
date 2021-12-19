@@ -8,11 +8,13 @@ import { useHistory } from "react-router-dom";
 import QuestionDetails from './QuestionDetails'
 import useForceUpdate from 'use-force-update';
 import { Link } from 'react-router-dom'
-
+import { Routes, Route, useParams } from "react-router-dom";
 
 
 
    function ViewQuesion(props) {
+    //let {params} = useParams();
+   // console.log( "paraaaaaaaaaammmmm " + params.id)
     const location = useLocation()
     const [option, setOption] = React.useState();
     const [status, setstatus] = React.useState(location.state.status);
